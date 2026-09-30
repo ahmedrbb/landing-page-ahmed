@@ -6,8 +6,7 @@ import {
   Sun, Moon, Copy, Check, Mail, 
   BarChart3, Database, Code, Send, Wrench
 } from 'lucide-react';
-import PowerBIModal from '../components/PowerBIModal';
-
+import PowerBIModal from '@/components/PowerBIModal';
 export default function Home() {
   const { theme, setTheme } = useTheme();
   const [mounted, setMounted] = useState(false);
