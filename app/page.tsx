@@ -49,6 +49,7 @@ export default function Home() {
             >
               {theme === 'dark' ? <Sun size={16} /> : <Moon size={16} />}
             </button>
+            
 
             {/* Télécharger CV */}
             <a 
@@ -198,7 +199,7 @@ export default function Home() {
           </div>
 
           <form 
-            action="https://formspree.io/f/xvvv_moevbnjy" 
+            action="https://formspree.io/f/moevbnjy" 
             method="POST"
             className="bg-slate-900/60 p-6 rounded-2xl border border-slate-800 space-y-4"
           >
