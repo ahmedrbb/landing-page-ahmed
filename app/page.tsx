@@ -4,14 +4,15 @@ import React, { useState, useEffect } from 'react';
 import { useTheme } from 'next-themes';
 import { 
   Sun, Moon, Copy, Check, Mail, 
-  BarChart3, Database, Code, Send, Wrench, X
+  BarChart3, Database, Code, Send, Wrench
 } from 'lucide-react';
+import PowerBIModal from '../components/PowerBIModal';
 
 export default function Home() {
   const { theme, setTheme } = useTheme();
   const [mounted, setMounted] = useState(false);
   const [copied, setCopied] = useState(false);
-  const [showPowerBIModal, setShowPowerBIModal] = useState(false);
+  const [showModal, setShowModal] = useState(false);
 
   useEffect(() => {
     setMounted(true);
@@ -26,7 +27,7 @@ export default function Home() {
   return (
     <div className="min-h-screen bg-white dark:bg-slate-950 text-slate-900 dark:text-slate-100 transition-colors duration-300 font-sans">
       
-      {/* 1. Header / Navbar */}
+      {/* Navbar */}
       <header className="sticky top-0 z-40 backdrop-blur-md bg-white/80 dark:bg-slate-950/80 border-b border-slate-200 dark:border-slate-800 px-6 py-4">
         <div className="max-w-6xl mx-auto flex justify-between items-center">
           <div className="flex items-center gap-2">
@@ -38,7 +39,6 @@ export default function Home() {
             <button
               onClick={handleCopyEmail}
               className="flex items-center gap-1.5 bg-slate-100 dark:bg-slate-900 hover:bg-slate-200 dark:hover:bg-slate-800 border border-slate-300 dark:border-slate-700 px-3 py-1.5 rounded-lg text-xs font-medium text-slate-700 dark:text-slate-300 transition"
-              title="Copier l'email"
             >
               {copied ? <Check size={14} className="text-green-500" /> : <Copy size={14} />}
               <span>{copied ? 'Copié !' : 'Copier Email'}</span>
@@ -60,7 +60,6 @@ export default function Home() {
               <button
                 onClick={() => setTheme(theme === 'dark' ? 'light' : 'dark')}
                 className="p-2 rounded-lg bg-slate-100 dark:bg-slate-900 border border-slate-300 dark:border-slate-800 text-slate-700 dark:text-slate-300 hover:text-blue-600 dark:hover:text-white transition"
-                aria-label="Changer le thème"
               >
                 {theme === 'dark' ? <Sun size={16} /> : <Moon size={16} />}
               </button>
@@ -77,7 +76,7 @@ export default function Home() {
         </div>
       </header>
 
-      {/* 2. Hero Section */}
+      {/* Hero Section */}
       <section className="max-w-6xl mx-auto px-6 py-16 text-left">
         <div className="inline-block bg-blue-100 dark:bg-blue-950/60 border border-blue-300 dark:border-blue-800/50 text-blue-700 dark:text-blue-400 text-xs font-bold px-3 py-1.5 rounded-full mb-6">
           Ingénieur d'État en Génie Informatique (MIAGE) — EMSI
@@ -90,7 +89,7 @@ export default function Home() {
         </p>
       </section>
 
-      {/* 3. Focus PFE & Visuels Power BI */}
+      {/* Focus PFE */}
       <section className="max-w-6xl mx-auto px-6 py-12 border-t border-slate-200 dark:border-slate-800">
         <h2 className="text-2xl font-bold mb-8 text-blue-600 dark:text-blue-400 flex items-center gap-2">
           <BarChart3 size={24} /> Projet de Fin d'Études (PFE) — Omnidata
@@ -103,9 +102,11 @@ export default function Home() {
               <h3 className="text-2xl font-bold text-slate-900 dark:text-slate-100 mt-2">Mise en place d'un Système Décisionnel Ventes & Logistique</h3>
             </div>
             
+            {/* BOUTON DECLENCHEUR DU MODAL */}
             <button
-              onClick={() => setShowPowerBIModal(true)}
-              className="flex items-center gap-2 bg-gradient-to-r from-blue-600 to-cyan-600 hover:from-blue-500 hover:to-cyan-500 text-white px-5 py-2.5 rounded-xl text-sm font-semibold transition shadow-lg shadow-blue-500/20"
+              type="button"
+              onClick={() => setShowModal(true)}
+              className="flex items-center gap-2 bg-gradient-to-r from-blue-600 to-cyan-600 hover:from-blue-500 hover:to-cyan-500 text-white px-5 py-2.5 rounded-xl text-sm font-semibold transition shadow-lg shadow-blue-500/20 cursor-pointer"
             >
               <BarChart3 size={18} />
               <span>Voir les Visuels Power BI</span>
@@ -143,7 +144,7 @@ export default function Home() {
         </div>
       </section>
 
-      {/* 4. Stack Technique & Expertise */}
+      {/* Stack Technique */}
       <section className="max-w-6xl mx-auto px-6 py-12 border-t border-slate-200 dark:border-slate-800">
         <h2 className="text-2xl font-bold mb-8 text-blue-600 dark:text-blue-400 flex items-center gap-2">
           <Wrench size={24} /> Stack Technique & Expertise
@@ -191,7 +192,7 @@ export default function Home() {
         </div>
       </section>
 
-      {/* 5. Formulaire de Contact */}
+      {/* Formulaire de Contact */}
       <section className="max-w-6xl mx-auto px-6 py-12 border-t border-slate-200 dark:border-slate-800">
         <h2 className="text-2xl font-bold mb-8 text-blue-600 dark:text-blue-400 flex items-center gap-2">
           <Mail size={24} /> Me Contacter
@@ -265,75 +266,8 @@ export default function Home() {
         <p className="mt-1">Ingénieur d'État diplômé de l'École Marocaine des Sciences de l'Ingénieur (EMSI)</p>
       </footer>
 
-      {/* MODAL / FENÊTRE SURGISSANTE POWER BI */}
-      {showPowerBIModal && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/75 backdrop-blur-sm p-4">
-          <div className="bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-2xl max-w-4xl w-full max-h-[90vh] overflow-y-auto p-6 relative shadow-2xl">
-            
-            <div className="flex justify-between items-center mb-6 border-b border-slate-200 dark:border-slate-800 pb-4">
-              <div className="flex items-center gap-3">
-                <BarChart3 className="text-blue-600 dark:text-blue-400" size={24} />
-                <h3 className="text-xl font-bold text-slate-900 dark:text-slate-100">
-                  Dashboards Power BI — Projet Omnidata
-                </h3>
-              </div>
-              <button
-                onClick={() => setShowPowerBIModal(false)}
-                className="p-2 rounded-lg text-slate-500 hover:text-slate-900 dark:hover:text-white bg-slate-100 dark:bg-slate-800 transition"
-              >
-                <X size={20} />
-              </button>
-            </div>
-
-            <div className="space-y-6">
-              <div className="space-y-2">
-                <h4 className="font-bold text-slate-800 dark:text-slate-200">1. Vue d'ensemble des Ventes & CA</h4>
-                <div className="aspect-video bg-slate-100 dark:bg-slate-800 rounded-xl overflow-hidden border border-slate-300 dark:border-slate-700 flex items-center justify-center">
-                  <img 
-                    src="/powerbi-dashboard-1.png" 
-                    alt="Dashboard Power BI Ventes"
-                    className="w-full h-full object-cover"
-                    onError={(e) => {
-                      // Fallback si l'image n'est pas trouvée
-                      e.currentTarget.style.display = 'none';
-                    }}
-                  />
-                  <span className="text-slate-400 text-xs text-center p-4">
-                    Placez votre capture d'écran dans le dossier <code className="bg-slate-200 dark:bg-slate-700 px-1 py-0.5 rounded text-blue-500">public/powerbi-dashboard-1.png</code>
-                  </span>
-                </div>
-              </div>
-
-              <div className="space-y-2">
-                <h4 className="font-bold text-slate-800 dark:text-slate-200">2. Analyse Logistique & Taux de Retour</h4>
-                <div className="aspect-video bg-slate-100 dark:bg-slate-800 rounded-xl overflow-hidden border border-slate-300 dark:border-slate-700 flex items-center justify-center">
-                  <img 
-                    src="/powerbi-dashboard-2.png" 
-                    alt="Dashboard Power BI Logistique"
-                    className="w-full h-full object-cover"
-                    onError={(e) => {
-                      e.currentTarget.style.display = 'none';
-                    }}
-                  />
-                  <span className="text-slate-400 text-xs text-center p-4">
-                    Placez votre capture d'écran dans le dossier <code className="bg-slate-200 dark:bg-slate-700 px-1 py-0.5 rounded text-blue-500">public/powerbi-dashboard-2.png</code>
-                  </span>
-                </div>
-              </div>
-            </div>
-
-            <div className="mt-8 text-right">
-              <button
-                onClick={() => setShowPowerBIModal(false)}
-                className="bg-slate-200 dark:bg-slate-800 hover:bg-slate-300 dark:hover:bg-slate-700 text-slate-800 dark:text-slate-200 px-5 py-2 rounded-xl text-sm font-semibold transition"
-              >
-                Fermer
-              </button>
-            </div>
-
-          </div>
-        </div>
-      )}
+      {/* COMPOSANT MODAL DECONNECTE ET CLIENT-SIDE */}
+      <PowerBIModal isOpen={showModal} onClose={() => setShowModal(false)} />
 
     </div>
   );
