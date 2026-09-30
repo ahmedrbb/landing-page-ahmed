@@ -4,7 +4,7 @@ import React, { useState, useEffect } from 'react';
 import { useTheme } from 'next-themes';
 import { 
   Sun, Moon, Copy, Check, Mail, 
-  BarChart3, Database, Code, Send, Wrench
+  BarChart3, Database, Code, Send, Wrench, X
 } from 'lucide-react';
 
 export default function Home() {
@@ -13,7 +13,6 @@ export default function Home() {
   const [copied, setCopied] = useState(false);
   const [showPowerBIModal, setShowPowerBIModal] = useState(false);
 
-  // Évite les décalages d'hydratation au chargement du thème
   useEffect(() => {
     setMounted(true);
   }, []);
@@ -28,7 +27,7 @@ export default function Home() {
     <div className="min-h-screen bg-white dark:bg-slate-950 text-slate-900 dark:text-slate-100 transition-colors duration-300 font-sans">
       
       {/* 1. Header / Navbar */}
-      <header className="sticky top-0 z-50 backdrop-blur-md bg-white/80 dark:bg-slate-950/80 border-b border-slate-200 dark:border-slate-800 px-6 py-4">
+      <header className="sticky top-0 z-40 backdrop-blur-md bg-white/80 dark:bg-slate-950/80 border-b border-slate-200 dark:border-slate-800 px-6 py-4">
         <div className="max-w-6xl mx-auto flex justify-between items-center">
           <div className="flex items-center gap-2">
             <div className="w-3 h-3 rounded-full bg-blue-500 animate-pulse"></div>
@@ -36,7 +35,6 @@ export default function Home() {
           </div>
 
           <div className="flex items-center gap-3">
-            {/* Bouton Copier Email */}
             <button
               onClick={handleCopyEmail}
               className="flex items-center gap-1.5 bg-slate-100 dark:bg-slate-900 hover:bg-slate-200 dark:hover:bg-slate-800 border border-slate-300 dark:border-slate-700 px-3 py-1.5 rounded-lg text-xs font-medium text-slate-700 dark:text-slate-300 transition"
@@ -46,9 +44,8 @@ export default function Home() {
               <span>{copied ? 'Copié !' : 'Copier Email'}</span>
             </button>
 
-            {/* Bouton Voir Profil LinkedIn */}
             <a
-              href="https://www.linkedin.com/in/votre-profil" // Remplacez par votre vrai lien LinkedIn
+              href="https://www.linkedin.com/in/votre-profil"
               target="_blank"
               rel="noopener noreferrer"
               className="flex items-center gap-1.5 bg-slate-100 dark:bg-slate-900 hover:bg-slate-200 dark:hover:bg-slate-800 border border-slate-300 dark:border-slate-700 px-3 py-1.5 rounded-lg text-xs font-medium text-slate-700 dark:text-slate-300 transition"
@@ -59,7 +56,6 @@ export default function Home() {
               <span>LinkedIn</span>
             </a>
 
-            {/* Theme Switcher Clair / Sombre */}
             {mounted && (
               <button
                 onClick={() => setTheme(theme === 'dark' ? 'light' : 'dark')}
@@ -70,7 +66,6 @@ export default function Home() {
               </button>
             )}
 
-            {/* Télécharger CV */}
             <a 
               href="/CV_AHMED_RBOUH.pdf" 
               download 
@@ -148,7 +143,7 @@ export default function Home() {
         </div>
       </section>
 
-      {/* 4. Stack Technique & Expertise (Conforme à votre image) */}
+      {/* 4. Stack Technique & Expertise */}
       <section className="max-w-6xl mx-auto px-6 py-12 border-t border-slate-200 dark:border-slate-800">
         <h2 className="text-2xl font-bold mb-8 text-blue-600 dark:text-blue-400 flex items-center gap-2">
           <Wrench size={24} /> Stack Technique & Expertise
@@ -269,6 +264,77 @@ export default function Home() {
         <p className="font-semibold text-slate-700 dark:text-slate-300">Ahmed Rbouh — Casablanca, Maroc</p>
         <p className="mt-1">Ingénieur d'État diplômé de l'École Marocaine des Sciences de l'Ingénieur (EMSI)</p>
       </footer>
+
+      {/* MODAL / FENÊTRE SURGISSANTE POWER BI */}
+      {showPowerBIModal && (
+        <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/75 backdrop-blur-sm p-4">
+          <div className="bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-2xl max-w-4xl w-full max-h-[90vh] overflow-y-auto p-6 relative shadow-2xl">
+            
+            <div className="flex justify-between items-center mb-6 border-b border-slate-200 dark:border-slate-800 pb-4">
+              <div className="flex items-center gap-3">
+                <BarChart3 className="text-blue-600 dark:text-blue-400" size={24} />
+                <h3 className="text-xl font-bold text-slate-900 dark:text-slate-100">
+                  Dashboards Power BI — Projet Omnidata
+                </h3>
+              </div>
+              <button
+                onClick={() => setShowPowerBIModal(false)}
+                className="p-2 rounded-lg text-slate-500 hover:text-slate-900 dark:hover:text-white bg-slate-100 dark:bg-slate-800 transition"
+              >
+                <X size={20} />
+              </button>
+            </div>
+
+            <div className="space-y-6">
+              <div className="space-y-2">
+                <h4 className="font-bold text-slate-800 dark:text-slate-200">1. Vue d'ensemble des Ventes & CA</h4>
+                <div className="aspect-video bg-slate-100 dark:bg-slate-800 rounded-xl overflow-hidden border border-slate-300 dark:border-slate-700 flex items-center justify-center">
+                  <img 
+                    src="/powerbi-dashboard-1.png" 
+                    alt="Dashboard Power BI Ventes"
+                    className="w-full h-full object-cover"
+                    onError={(e) => {
+                      // Fallback si l'image n'est pas trouvée
+                      e.currentTarget.style.display = 'none';
+                    }}
+                  />
+                  <span className="text-slate-400 text-xs text-center p-4">
+                    Placez votre capture d'écran dans le dossier <code className="bg-slate-200 dark:bg-slate-700 px-1 py-0.5 rounded text-blue-500">public/powerbi-dashboard-1.png</code>
+                  </span>
+                </div>
+              </div>
+
+              <div className="space-y-2">
+                <h4 className="font-bold text-slate-800 dark:text-slate-200">2. Analyse Logistique & Taux de Retour</h4>
+                <div className="aspect-video bg-slate-100 dark:bg-slate-800 rounded-xl overflow-hidden border border-slate-300 dark:border-slate-700 flex items-center justify-center">
+                  <img 
+                    src="/powerbi-dashboard-2.png" 
+                    alt="Dashboard Power BI Logistique"
+                    className="w-full h-full object-cover"
+                    onError={(e) => {
+                      e.currentTarget.style.display = 'none';
+                    }}
+                  />
+                  <span className="text-slate-400 text-xs text-center p-4">
+                    Placez votre capture d'écran dans le dossier <code className="bg-slate-200 dark:bg-slate-700 px-1 py-0.5 rounded text-blue-500">public/powerbi-dashboard-2.png</code>
+                  </span>
+                </div>
+              </div>
+            </div>
+
+            <div className="mt-8 text-right">
+              <button
+                onClick={() => setShowPowerBIModal(false)}
+                className="bg-slate-200 dark:bg-slate-800 hover:bg-slate-300 dark:hover:bg-slate-700 text-slate-800 dark:text-slate-200 px-5 py-2 rounded-xl text-sm font-semibold transition"
+              >
+                Fermer
+              </button>
+            </div>
+
+          </div>
+        </div>
+      )}
+
     </div>
   );
 }
