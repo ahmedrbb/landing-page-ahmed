@@ -6,7 +6,8 @@ import {
   Sun, Moon, Copy, Check, Mail, 
   BarChart3, Database, Code, Send, Wrench
 } from 'lucide-react';
-import PowerBIModal from '@/components/PowerBIModal';
+import PowerBIModal from '../components/PowerBIModal';
+
 export default function Home() {
   const { theme, setTheme } = useTheme();
   const [mounted, setMounted] = useState(false);
@@ -43,17 +44,16 @@ export default function Home() {
               <span>{copied ? 'Copié !' : 'Copier Email'}</span>
             </button>
 
-            <a
-              href="https://www.linkedin.com/in/votre-profil"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="flex items-center gap-1.5 bg-slate-100 dark:bg-slate-900 hover:bg-slate-200 dark:hover:bg-slate-800 border border-slate-300 dark:border-slate-700 px-3 py-1.5 rounded-lg text-xs font-medium text-slate-700 dark:text-slate-300 transition"
-            >
-              <svg className="w-3.5 h-3.5 fill-current text-blue-600 dark:text-blue-400" viewBox="0 0 24 24">
-                <path d="M19 3a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h14m-.5 15.5v-5.3a3.26 3.26 0 0 0-3.26-3.26c-.85 0-1.84.52-2.28 1.3v-1.11h-2.79v8.37h2.79v-4.93c0-.77.62-1.4 1.39-1.4a1.4 1.4 0 0 1 1.4 1.4v4.93h2.75M6.46 10.9v8.37H9.25V10.9H6.46M7.86 6.6a1.4 1.4 0 1 0 1.4 1.4 1.4 1.4 0 0 0-1.4-1.4z"/>
-              </svg>
-              <span>LinkedIn</span>
-            </a>
+            {/* Bouton LinkedIn mis à jour */}
+            <button
+  onClick={() => window.open('https://www.linkedin.com/in/ahmed-rbouh-229b94265/', '_blank', 'noopener,noreferrer')}
+  className="flex items-center gap-1.5 bg-slate-100 dark:bg-slate-900 hover:bg-slate-200 dark:hover:bg-slate-800 border border-slate-300 dark:border-slate-700 px-3 py-1.5 rounded-lg text-xs font-medium text-slate-700 dark:text-slate-300 transition cursor-pointer"
+>
+  <svg className="w-3.5 h-3.5 fill-current text-blue-600 dark:text-blue-400" viewBox="0 0 24 24">
+    <path d="M19 3a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h14m-.5 15.5v-5.3a3.26 3.26 0 0 0-3.26-3.26c-.85 0-1.84.52-2.28 1.3v-1.11h-2.79v8.37h2.79v-4.93c0-.77.62-1.4 1.39-1.4a1.4 1.4 0 0 1 1.4 1.4v4.93h2.75M6.46 10.9v8.37H9.25V10.9H6.46M7.86 6.6a1.4 1.4 0 1 0 1.4 1.4 1.4 1.4 0 0 0-1.4-1.4z"/>
+  </svg>
+  <span>LinkedIn</span>
+</button>
 
             {mounted && (
               <button
@@ -101,7 +101,6 @@ export default function Home() {
               <h3 className="text-2xl font-bold text-slate-900 dark:text-slate-100 mt-2">Mise en place d'un Système Décisionnel Ventes & Logistique</h3>
             </div>
             
-            {/* BOUTON DECLENCHEUR DU MODAL */}
             <button
               type="button"
               onClick={() => setShowModal(true)}
@@ -265,7 +264,7 @@ export default function Home() {
         <p className="mt-1">Ingénieur d'État diplômé de l'École Marocaine des Sciences de l'Ingénieur (EMSI)</p>
       </footer>
 
-      {/* COMPOSANT MODAL DECONNECTE ET CLIENT-SIDE */}
+      {/* Modal Power BI */}
       <PowerBIModal isOpen={showModal} onClose={() => setShowModal(false)} />
 
     </div>
