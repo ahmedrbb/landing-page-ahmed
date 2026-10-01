@@ -88,6 +88,7 @@ export default function Home() {
       </section>
 
       {/* SECTION À PROPOS */}
+      {/* SECTION À PROPOS */}
       <section className="max-w-6xl mx-auto px-6 py-12 border-t border-slate-200 dark:border-slate-800">
         <h2 className="text-2xl font-bold mb-8 text-blue-600 dark:text-blue-400 flex items-center gap-2">
           <User size={24} /> À propos de moi
@@ -100,7 +101,6 @@ export default function Home() {
               alt="Ahmed Rbouh" 
               className="w-full h-full object-cover"
               onError={(e) => {
-                // Fallback visuel si l'image n'est pas encore chargée
                 e.currentTarget.style.display = 'none';
               }}
             />
@@ -108,18 +108,17 @@ export default function Home() {
 
           <div className="space-y-4 text-slate-700 dark:text-slate-300 text-sm leading-relaxed">
             <p>
-              Actuellement élève ingénieur en 5ème année Génie Informatique (option MIAGE) à l'École Marocaine des Sciences de l'Ingénieur (EMSI) à Casablanca, je me passionne pour la transformation des données brutes en leviers décisionnels stratégiques[cite: 2.2, 2.3].
+              Diplômé Ingénieur d'État en Génie Informatique (option MIAGE) de l'École Marocaine des Sciences de l'Ingénieur (EMSI) à Casablanca, je dispose d'un profil polyvalent alliant ingénierie décisionnelle (Business Intelligence) et développement logiciel.
             </p>
             <p>
-              Mon parcours m'a permis d'acquérir une double compétence solide : d'une part l'ingénierie des données (architecture Data Warehouse, pipelines ETL avec SSIS, modélisation PostgreSQL et tableaux de bord Power BI) et d'autre part le développement d'applications d'entreprise Full Stack (Java, Spring Boot, React).
+              Riche d'expériences pratiques acquises lors de mes stages chez <strong>OMNIDATA</strong> (conception d'entrepôts de données et pipelines ETL/Power BI), <strong>PwC</strong> (développement web Full Stack avec Spring Boot & React) et <strong>SOTHEMA</strong>, j'ai développé une solide maîtrise de l'écosystème Data (PostgreSQL, SSIS, DAX, Python) et du développement d'applications d'entreprise.
             </p>
-            <p className="font-semibold text-slate-900 dark:text-slate-100">
-              🎯 À la recherche d'une opportunité professionnelle stimulante (CDI ou Stage PFE) en Business Intelligence, Data Engineering ou Développement Full Stack afin de mettre mes compétences au service de projets à forte valeur ajoutée.
+            <p className="font-semibold text-slate-900 dark:text-slate-100 bg-blue-50 dark:bg-blue-950/40 p-3 rounded-lg border border-blue-200 dark:border-blue-800/50">
+               À la recherche active d'une opportunité professionnelle (CDI ou Premier Emploi) à Casablanca ou en distanciel, pour mettre à profit mes compétences en Java, Python, Spring Boot, React et Data Engineering.
             </p>
           </div>
         </div>
       </section>
-
       {/* Focus PFE */}
       <section className="max-w-6xl mx-auto px-6 py-12 border-t border-slate-200 dark:border-slate-800">
         <h2 className="text-2xl font-bold mb-8 text-blue-600 dark:text-blue-400 flex items-center gap-2">
