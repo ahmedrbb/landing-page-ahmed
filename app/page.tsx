@@ -376,8 +376,8 @@ export default function Home() {
 
       {/* Footer */}
       <footer className="border-t border-slate-200 dark:border-slate-800 py-8 text-center text-xs text-slate-500">
-        <p className="font-semibold text-slate-700 dark:text-slate-300">Ahmed Rbouh — Casablanca, Maroc[cite: 2.2, 2.3]</p>
-        <p className="mt-1">Ingénieur d'État diplômé de l'École Marocaine des Sciences de l'Ingénieur (EMSI)[cite: 2.2, 2.3]</p>
+        <p className="font-semibold text-slate-700 dark:text-slate-300">Ahmed Rbouh — Casablanca, Maroc</p>
+        <p className="mt-1">Ingénieur d'État diplômé de l'École Marocaine des Sciences de l'Ingénieur (EMSI)</p>
       </footer>
 
       {/* Modal Power BI */}
