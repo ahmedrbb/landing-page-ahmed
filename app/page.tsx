@@ -4,7 +4,7 @@ import React, { useState, useEffect } from 'react';
 import { useTheme } from 'next-themes';
 import { 
   Sun, Moon, Copy, Check, Mail, 
-  BarChart3, Database, Code, Send, Wrench
+  BarChart3, Database, Code, Send, Wrench, User, Award, ExternalLink
 } from 'lucide-react';
 import PowerBIModal from '../components/PowerBIModal';
 
@@ -44,16 +44,15 @@ export default function Home() {
               <span>{copied ? 'Copié !' : 'Copier Email'}</span>
             </button>
 
-            {/* Bouton LinkedIn mis à jour */}
             <button
-  onClick={() => window.open('https://www.linkedin.com/in/ahmed-rbouh-229b94265/', '_blank', 'noopener,noreferrer')}
-  className="flex items-center gap-1.5 bg-slate-100 dark:bg-slate-900 hover:bg-slate-200 dark:hover:bg-slate-800 border border-slate-300 dark:border-slate-700 px-3 py-1.5 rounded-lg text-xs font-medium text-slate-700 dark:text-slate-300 transition cursor-pointer"
->
-  <svg className="w-3.5 h-3.5 fill-current text-blue-600 dark:text-blue-400" viewBox="0 0 24 24">
-    <path d="M19 3a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h14m-.5 15.5v-5.3a3.26 3.26 0 0 0-3.26-3.26c-.85 0-1.84.52-2.28 1.3v-1.11h-2.79v8.37h2.79v-4.93c0-.77.62-1.4 1.39-1.4a1.4 1.4 0 0 1 1.4 1.4v4.93h2.75M6.46 10.9v8.37H9.25V10.9H6.46M7.86 6.6a1.4 1.4 0 1 0 1.4 1.4 1.4 1.4 0 0 0-1.4-1.4z"/>
-  </svg>
-  <span>LinkedIn</span>
-</button>
+              onClick={() => window.open('https://www.linkedin.com/in/ahmed-rbouh-229b94265/', '_blank', 'noopener,noreferrer')}
+              className="flex items-center gap-1.5 bg-slate-100 dark:bg-slate-900 hover:bg-slate-200 dark:hover:bg-slate-800 border border-slate-300 dark:border-slate-700 px-3 py-1.5 rounded-lg text-xs font-medium text-slate-700 dark:text-slate-300 transition cursor-pointer"
+            >
+              <svg className="w-3.5 h-3.5 fill-current text-blue-600 dark:text-blue-400" viewBox="0 0 24 24">
+                <path d="M19 3a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h14m-.5 15.5v-5.3a3.26 3.26 0 0 0-3.26-3.26c-.85 0-1.84.52-2.28 1.3v-1.11h-2.79v8.37h2.79v-4.93c0-.77.62-1.4 1.39-1.4a1.4 1.4 0 0 1 1.4 1.4v4.93h2.75M6.46 10.9v8.37H9.25V10.9H6.46M7.86 6.6a1.4 1.4 0 1 0 1.4 1.4 1.4 1.4 0 0 0-1.4-1.4z"/>
+              </svg>
+              <span>LinkedIn</span>
+            </button>
 
             {mounted && (
               <button
@@ -86,6 +85,39 @@ export default function Home() {
         <p className="mt-6 text-slate-600 dark:text-slate-400 text-lg max-w-3xl leading-relaxed">
           Spécialisé dans l'architecture de données (Data Warehouse, Pipelines ETL, Power BI/DAX) et la création d'applications web d'entreprise robustes (Java, Spring Boot, React).
         </p>
+      </section>
+
+      {/* SECTION À PROPOS */}
+      <section className="max-w-6xl mx-auto px-6 py-12 border-t border-slate-200 dark:border-slate-800">
+        <h2 className="text-2xl font-bold mb-8 text-blue-600 dark:text-blue-400 flex items-center gap-2">
+          <User size={24} /> À propos de moi
+        </h2>
+
+        <div className="bg-slate-50 dark:bg-slate-900/60 p-8 rounded-2xl border border-slate-200 dark:border-slate-800 flex flex-col md:flex-row items-center gap-8">
+          <div className="w-40 h-40 md:w-48 md:h-48 rounded-2xl overflow-hidden border-2 border-blue-500 shadow-xl flex-shrink-0 bg-slate-200 dark:bg-slate-800">
+            <img 
+              src="/profile.png" 
+              alt="Ahmed Rbouh" 
+              className="w-full h-full object-cover"
+              onError={(e) => {
+                // Fallback visuel si l'image n'est pas encore chargée
+                e.currentTarget.style.display = 'none';
+              }}
+            />
+          </div>
+
+          <div className="space-y-4 text-slate-700 dark:text-slate-300 text-sm leading-relaxed">
+            <p>
+              Actuellement élève ingénieur en 5ème année Génie Informatique (option MIAGE) à l'École Marocaine des Sciences de l'Ingénieur (EMSI) à Casablanca, je me passionne pour la transformation des données brutes en leviers décisionnels stratégiques[cite: 2.2, 2.3].
+            </p>
+            <p>
+              Mon parcours m'a permis d'acquérir une double compétence solide : d'une part l'ingénierie des données (architecture Data Warehouse, pipelines ETL avec SSIS, modélisation PostgreSQL et tableaux de bord Power BI) et d'autre part le développement d'applications d'entreprise Full Stack (Java, Spring Boot, React).
+            </p>
+            <p className="font-semibold text-slate-900 dark:text-slate-100">
+              🎯 À la recherche d'une opportunité professionnelle stimulante (CDI ou Stage PFE) en Business Intelligence, Data Engineering ou Développement Full Stack afin de mettre mes compétences au service de projets à forte valeur ajoutée.
+            </p>
+          </div>
+        </div>
       </section>
 
       {/* Focus PFE */}
@@ -179,14 +211,99 @@ export default function Home() {
           </div>
 
           <div className="bg-slate-50 dark:bg-slate-900/60 p-6 rounded-2xl border border-slate-200 dark:border-slate-800">
-            <h4 className="font-bold text-slate-900 dark:text-slate-200 mb-4 text-xs tracking-wider uppercase">CERTIFICATIONS</h4>
+            <h4 className="font-bold text-slate-900 dark:text-slate-200 mb-4 text-xs tracking-wider uppercase">OUTILS & DEVOPS</h4>
             <ul className="text-xs text-slate-600 dark:text-slate-400 space-y-2.5 font-mono">
-              <li>• Oracle OCI 2025 DevOps</li>
-              <li>• Univ. Michigan (Python)</li>
-              <li>• Univ. Pennsylvania (Java)</li>
-              <li>• Bac Sciences Mention Bien</li>
+              <li>• Git & GitHub</li>
+              <li>• Docker & Linux</li>
+              <li>• Vercel & CI/CD</li>
+              <li>• VS Code & Eclipse</li>
             </ul>
           </div>
+        </div>
+      </section>
+
+      {/* SECTION CERTIFICATIONS */}
+      <section className="max-w-6xl mx-auto px-6 py-12 border-t border-slate-200 dark:border-slate-800">
+        <h2 className="text-2xl font-bold mb-8 text-blue-600 dark:text-blue-400 flex items-center gap-2">
+          <Award size={24} /> Certifications
+        </h2>
+
+        <div className="grid md:grid-cols-2 gap-6">
+          
+          {/* Coursera - Web Dev */}
+          <div className="bg-slate-50 dark:bg-slate-900/60 p-6 rounded-2xl border border-slate-200 dark:border-slate-800 space-y-3">
+            <div className="flex justify-between items-start">
+              <div>
+                <span className="text-xs font-bold text-blue-600 dark:text-blue-400 bg-blue-100 dark:bg-blue-950 px-2 py-0.5 rounded">Coursera</span>
+                <h3 className="font-bold text-slate-900 dark:text-slate-100 text-base mt-1">HTML, CSS, and Javascript for Web Developers</h3>
+                <p className="text-xs text-slate-500">Johns Hopkins University</p>
+              </div>
+              <a 
+                href="https://coursera.org/share/92e31a10560eb95da242b44800e17af2" 
+                target="_blank" 
+                rel="noopener noreferrer"
+                className="text-blue-600 dark:text-blue-400 hover:text-blue-500 p-1"
+                title="Vérifier le certificat"
+              >
+                <ExternalLink size={18} />
+              </a>
+            </div>
+            <p className="text-xs text-slate-600 dark:text-slate-400">
+              Maîtrise des fondamentaux du développement web moderne et de la création d'interfaces utilisateur réactives.
+            </p>
+          </div>
+
+          {/* Coursera - Arduino & C */}
+          <div className="bg-slate-50 dark:bg-slate-900/60 p-6 rounded-2xl border border-slate-200 dark:border-slate-800 space-y-3">
+            <div className="flex justify-between items-start">
+              <div>
+                <span className="text-xs font-bold text-blue-600 dark:text-blue-400 bg-blue-100 dark:bg-blue-950 px-2 py-0.5 rounded">Coursera</span>
+                <h3 className="font-bold text-slate-900 dark:text-slate-100 text-base mt-1">The Arduino Platform and C Programming</h3>
+                <p className="text-xs text-slate-500">University of California, Irvine</p>
+              </div>
+              <a 
+                href="https://coursera.org/share/586c09550794360cbea840d23450ab1e" 
+                target="_blank" 
+                rel="noopener noreferrer"
+                className="text-blue-600 dark:text-blue-400 hover:text-blue-500 p-1"
+                title="Vérifier le certificat"
+              >
+                <ExternalLink size={18} />
+              </a>
+            </div>
+            <p className="text-xs text-slate-600 dark:text-slate-400">
+              Programmation bas niveau en C, interaction avec des composants matériels et logique embarquée.
+            </p>
+          </div>
+
+          {/* Oracle OCI DevOps */}
+          <div className="bg-slate-50 dark:bg-slate-900/60 p-6 rounded-2xl border border-slate-200 dark:border-slate-800 space-y-3">
+            <div className="flex justify-between items-start">
+              <div>
+                <span className="text-xs font-bold text-orange-600 dark:text-orange-400 bg-orange-100 dark:bg-orange-950 px-2 py-0.5 rounded">Oracle</span>
+                <h3 className="font-bold text-slate-900 dark:text-slate-100 text-base mt-1">Oracle Cloud Infrastructure (OCI) 2025 DevOps Professional</h3>
+                <p className="text-xs text-slate-500">Oracle Cloud</p>
+              </div>
+            </div>
+            <p className="text-xs text-slate-600 dark:text-slate-400">
+              Automation du déploiement, pipelines CI/CD, gestion d'infrastructures cloud et services OCI.
+            </p>
+          </div>
+
+          {/* Spécialisations académiques Michigan / Pennsylvania */}
+          <div className="bg-slate-50 dark:bg-slate-900/60 p-6 rounded-2xl border border-slate-200 dark:border-slate-800 space-y-3">
+            <div className="flex justify-between items-start">
+              <div>
+                <span className="text-xs font-bold text-purple-600 dark:text-purple-400 bg-purple-100 dark:bg-purple-950 px-2 py-0.5 rounded">Spécialisations</span>
+                <h3 className="font-bold text-slate-900 dark:text-slate-100 text-base mt-1">Python for Everybody & Java Programming</h3>
+                <p className="text-xs text-slate-500">Univ. of Michigan & Univ. of Pennsylvania</p>
+              </div>
+            </div>
+            <p className="text-xs text-slate-600 dark:text-slate-400">
+              Structures de données avancées, développement orienté objet en Java et traitement de données sous Python.
+            </p>
+          </div>
+
         </div>
       </section>
 
@@ -260,8 +377,8 @@ export default function Home() {
 
       {/* Footer */}
       <footer className="border-t border-slate-200 dark:border-slate-800 py-8 text-center text-xs text-slate-500">
-        <p className="font-semibold text-slate-700 dark:text-slate-300">Ahmed Rbouh — Casablanca, Maroc</p>
-        <p className="mt-1">Ingénieur d'État diplômé de l'École Marocaine des Sciences de l'Ingénieur (EMSI)</p>
+        <p className="font-semibold text-slate-700 dark:text-slate-300">Ahmed Rbouh — Casablanca, Maroc[cite: 2.2, 2.3]</p>
+        <p className="mt-1">Ingénieur d'État diplômé de l'École Marocaine des Sciences de l'Ingénieur (EMSI)[cite: 2.2, 2.3]</p>
       </footer>
 
       {/* Modal Power BI */}
